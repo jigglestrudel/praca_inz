@@ -1,0 +1,25 @@
+\chapter{Przegląd stanu wiedzy}
+\label{chap:literature}
+
+W niniejszym rozdziale przedstawiono algorytmy stosowane do rozwiązywania problemów zbliżonych do przedstawianego w tej pracy.
+
+\section{Algorytmy stosowane do wykrywania krawędzi}
+
+Wykrywanie krawędzi znajduje zastosowanie w wielu aspektach informatyki, w szczególności widzenia komputerowego. Jako jeden z pierwszych kroków analizy obrazu ma na celu znalezienie i zaznaczenie różnic i nieciągłości wartości pikseli w jego dziedzinie przestrzennej. Z pośród wielu najpopularniejszych algorytmów można wyróżnić dwie grupy\cite{survey_on_edge_detection}:
+\begin{itemize}
+    \item algorytmy gradientowe,
+    \item algorytmy oparte na funkcji Gaussa.
+\end{itemize}
+Obie grupy różnią się metodą wykrywania i zaznaczania krawędzi i granic na obrazach a także złożonością obliczeniową, podatnością na szumy i dokładnością efektów.
+
+\paragraph{Algorytmy gradientowe}
+
+Algorytmy gradientowe oparte są na pierwszej pochodnej wartości pikseli obrazu i są w stanie zaznaczyć zmianę natężenia barw jako wykrytą krawędź\cite{survey_on_edge_detection}. Do najbardziej znanych operatorów należą operatory Robertsa, Sobela i Prewitta. Pierwszy z nich został opisany przez L. G. Robertsa w 1965 i wykorzystuje maskę o rozmiarze 2x2. Jest jednym z najwcześniej opracowanych algorytmów wykrywania krawędzi. Nie jest złożony obliczeniowo, więc może znaleźć zastosowanie w narzędziach czasu rzeczywistego lecz jego podatność na szum w obrazie jest wysoka w porównaniu z bardziej zawaansowanymi metodami\cite{survey_on_edge_detection}. Operator Sobela, znany także jako operator Sobela-Feldmana został opracowany przez I. Sobela i G. Feldmana w 1968 roku jako "bardziej izotropowa" metoda względem operatora Robertsa\cite{sobel_feldman}. Oparty jest na dwóch maskach 3x3: pionowej oraz poziomej. Metoda ta dzieli z wcześniej wymienionym operatorem wady i zalety: niska złożoność obliczeniowa przy wysokiej podatności na szum\cite{survey_on_edge_detection}. Kolejnym, podobnym algorytmem jest operator Prewitta. Tak jak jego poprzednik, oparty jest na dwóch maskach w postaci macierzy 3x3 rozróżniających zmiany pionowe i poziome. Z operatorem Sobela dzieli również jego inne cechy: szybkość komputacji i podatność na szumy\cite{survey_on_edge_detection}\cite{prewitt}. Wszystkie wymienione sposoby gradientowe nadal znajdują szerokie zastosowanie w dziedzinie widzenia komputerowego.
+
+\paragraph{Algorytmy oparte na funkcji Gaussa}
+
+Algorytmy oparte na funkcji Gaussa wykorzystują ją do rozmycia obrazu. Z pośród nich można wymienić Laplasjan Gaussa oraz operator Canny'ego. Pierwszy z nich to izotropowa miara drugiej pochodnej przestrzennej obrazu. Stosuje połączone maski funkcji Gaussa oraz operatora Laplace'a\cite{raman_et_al_study_and_comparison}. Pozwala to na zmniejszenie wpływu szumu przy jednoczesnym różniczkowaniu. Bardziej złożoną metodą wykrywania krawędzi jest operator Canny'ego. Składa się on z 6 kroków\cite{raman_et_al_study_and_comparison}. Najpierw obraz jest rozmywany za pomocą filtru Gaussa. Etap ten pozwala zmniejszyć efekt zakłuceń przy dalszych działaniach. Kolejną częścią algorytmu jest obliczenie gradientów obrazu. Wykorzystywany jest do tego wspomniany wcześniej operator Sobela. Siła krawędzi jest obliczana na podstawie sumy gradientów obliczonych za pomocą masek pionowych i poziomych. Następnie uzyskane wartości używane są do określenia kierunku krawędzi korzystając z funkcji arcus tangens. Kolejnym krokiem jest przybliżenie kąta obliczonego wcześniej do wartości możliwych do uzyskania na mapie bitowej tj. 0\textdegree, 45\textdegree, 90\textdegree i 135\textdegree przy czym wielkości bliższe do kąta 180\textdegree zaokrąglane są do 0\textdegree. Następna czynność wykonywana przez detektor to usuwanie pikseli niemaksymalnych pozwalające wyeliminowanie pikseli niebędących częścią krawędzi. Ostatnim krokiem jest wykorzystanie histerezy w celu zapobiegnięcia przerywanych linii. Używane do tego są dwa progi: jeden pozwalający rozpoczęcie podążania za krawędzią a drugi umożliwiający określenie jej końca. Operator Canny'ego obarczony jest, w porównaniu do wcześniej wymienionych algorytmów, wysokim kosztem obliczeniowym. Możliwość dostosowania parametrów rozmycia i czułości sprawia, że jest wykorzystywany w wielu dziedzinach. W wielu porównaniach algorytmów wykrywania krawędzi opisywany jest jako najchętniej wykorzystywany oraz dający wysokiej jakości efekty.\cite{raman_et_al_study_and_comparison}\cite{survey_on_edge_detection}
+
+\section{Algorytmy stosowane do planowania trasy}
+
+W planowaniu trasy są stosowane różne algorytmy w zależności od potrzeb. W przypadku wyznaczania trasy dla drona istotny jej brak ostrych zakrętów. Dla tego problemu rozwiązaniem może być algorytm zaproponowany przez S. Moona i D. H. Shima \cite{path_planning_uav}.

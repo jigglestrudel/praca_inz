@@ -1,0 +1,38 @@
+% Wczytanie szablonu
+\documentclass[nostrict]{Szablon}
+
+% Definicja dokumentu
+\usepackage{xcolor}
+\usepackage[unicode=true]{hyperref}
+\usepackage{array}
+\usepackage{float}
+\usepackage{changepage}
+\usepackage{enumitem}
+\newcommand\PDFtitle{Narzędzie do interaktywnego planowania trasy lotu bezzałogowego statku powietrznego}
+\newcommand\PDFauthors{Tomasz Krępa, Filip Korthals, Wiktoria Kubacka}
+\hypersetup{
+  pdftitle={\PDFtitle},
+  pdfauthor={\PDFauthors},
+}
+
+% Zmiana czcionki dla symulacji maszynopisu (verbatim)
+\makeatletter
+\renewcommand{\verbatim@font}{\ttfamily\small}
+\makeatother
+
+% Część właściwa pracy
+\begin{document}
+\include{chapters/0a_streszczenie}
+\include{chapters/0b_spis_tresci}
+\include{chapters/0c_wykaz_wazniejszych_oznaczen_i_skrotow}
+\include{chapters/1_wstep_i_cel_pracy}
+\include{chapters/2_wprowadzenie_do_dziedziny}
+\include{chapters/3_stosowana_terminologia}
+\include{chapters/4_istniejace_rozwiazania}
+\include{chapters/5_przegląd_stanu_wiedzy}
+\include{chapters/6_analiza_systemu}
+\include{chapters/7_projekt_systemu}
+\include{chapters/8_implementacja_testowanie_weryfikacja_i_walidacja}
+\include{chapters/9_podsumowanie_i_wnioski}
+\include{chapters/10_wykazy}
+\end{document}

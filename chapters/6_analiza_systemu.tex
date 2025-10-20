@@ -1,0 +1,101 @@
+\chapter{Analiza systemu}
+\label{chap:system analysis}
+
+W tym rozdziale są wymienione i opisane wszystkie wymagania, jakie zostały postawione przed implementacją aplikacji do planowania trasy dla bezzałogowego statku powietrznego. Ponadto są tutaj zamieszczone informacje o zespole oraz harmonogram pracy i analiza ryzyk jakie mogą wystąpić w projekcie.
+
+\section{Specyfikacja wymagań}
+
+Aplikacja internetowa mająca na celu wyznaczanie trasy dla bezzałogowego statku powietrznego zbierającego dane z czujników umieszczonych w ziemi. Trasa przelotu jest wyznaczona na podstawie wybranych przez użytkownika punktów na mapie tak, aby jak najlepiej pokrywała wybrany teren leśny lub pole. Granice obszaru, który ma zostać pokryty obejmują zaznaczone miejsca i zostają wyznaczone na podstawie zdjęć satelitarnych. Wynikiem działania programu ma być wizualizacja wyznaczonej trasy na mapie przechodzącej przez wybrane punkty.
+
+\subsection{Wymagania funkcjonalne}
+Jedną z części specyfikacji wymagań są wymogi dotyczące funkcji i działania systemu. Na podstawie założeń wynikających z natury projektu wybrane zostały następujące wymagania funkcjonalne: 
+\begin{itemize}
+    \item odczyt współrzędnych geograficznych punktów wskazanych przez użytkownika,
+    \item odczyt prędkości lotu drona i maksymalnego czasu przelotu (prędkość z zakresu 50-120\,km/h, maksymalny czas przelotu z zakresu 1-2\,h),
+    \item wyznaczanie granic obszaru leśnego lub pola rolnego na podstawie zdjęcia satelitarnego,
+    \item wyznaczanie obszaru jaki ma zostać pokryty przez przelot drona na podstawie zaznaczonych punktów na mapie oraz wyznaczonych granic ze zdjęcia satelitarnego,
+    \item wyznaczanie optymalnej trasy na podstawie wyznaczonego obszaru, punktów, danych podanych przez użytkownika oraz założonych stałych promienia zasięgu drona i czasu wymaganego na przesył danych,
+    \item wizualizacja wyznaczonej trasy.
+\end{itemize}
+
+\subsection{Wymagania dotyczące warstwy interakcji z użytkownikiem}
+
+Poniżej znajdują się wymagania dotyczące warstwy interakcji z użytkownikiem: 
+
+\begin{itemize}
+    \item nauka obsługi interfejsu nie zajmuje więcej niż pięciokrotne przeprowadzanie procesu planowania trasy,
+    \item interfejs responsywny dla urządzeń mobilnych,
+    \item interfejs zawiera pola do wprowadzenia parametrów lotu oraz nie daje możliwości wprowadzenia niepoprawnych danych,
+    \item interfejs korzysta z API Google Maps.
+\end{itemize}
+
+\subsection{Wymagania systemowe}
+Aplikacja powinna działać na urządzeniach z dostępem do przeglądarki internetowej oraz połączenia sieciowego. 
+
+\subsection{Wymagania niefunkcjonalne}
+
+Poniżej znajdują się wymagania niefunkcjonalne, jakie powinna spełniać ta aplikacja:
+
+\begin{itemize}
+    \item konfigurowalność -- system powinien mieć możliwość zmiany parametrów przelotu drona: czasu lotu oraz prędkości przelotowej,
+    \item przenośność -- system powinien działać na zarówno na urządzeniach przenośnych, jak i komputerach stacjonarnych,
+    \item kompatybilność - system powinien działać na najpopularniejszych przeglądarkach w aktualnie najnowszych, stabilnych wersjach.
+\end{itemize}
+
+\section{Kryteria akceptacji}
+
+Kryteria, które są niezbędne, aby projekt został uzany za zakończony:
+
+\begin{itemize}
+    \item pobieranie parametrów lotu od użytkownika,
+    \item możliwość wyśrodkowania mapy w wyszukanym miejscu,
+    \item możliwość nanoszenia wybranych punktów na mapę,
+    \item wykrywanie krawędzi pól lub lasów, na których znajdują się wskazane punkty,
+    \item wyznaczanie trasy na podstawie wskazanych punktów oraz parametrów,
+    \item informacja zwrotna w przypadku braku możliwości pokrycia zaznaczonego przez użytkownika terenu przez przelot drona,
+    \item wyznaczona przez program trasa jest możliwa do wykonania przez danego drona oraz znajduje się w wyznaczonym obszarze,
+    \item wizualizacja przebiegu poprawnej trasy.
+\end{itemize}
+
+\section{Zespół projektowy}
+
+Zespół projektowy składa się z trzech osób:
+
+\begin{itemize}
+    \item Wiktoria Kubacka -- studenkta
+    \item Tomasz Krępa -- student
+    \item Filip Korthals -- student
+\end{itemize}
+
+\section{Harmonogram pracy}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{ | p{8cm} | p{4cm}| } 
+  \hline
+  \textbf{Miesiąc} & \textbf{Zadanie} \\
+  \hline
+  przegląd literatury & marzec \\ 
+  \hline
+  wybór technologii & marzec \\ 
+  \hline
+  specyfikacja wymagań & marzec \\ 
+  \hline
+  implementacja interfejsu użytkownika & kwiecień \\
+  \hline
+  wykrywanie krawędzi na mapach & kwiecień \\
+  \hline
+  implementacja planowania trasy & maj \\
+  \hline
+  wizualizacja wyników & maj \\
+  \hline
+  planowanie zakończenie implementacji & czerwiec \\
+  \hline
+  udoskonalanie implementacji & październik-listopad \\ 
+  \hline
+  dokończenie i udoskonalanie dokumentacji & październik-listopad \\
+  \hline
+  
+\end{tabular}
+
+\section{Analiza ryzyka}
+
