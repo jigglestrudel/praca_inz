@@ -8,6 +8,8 @@
 \usepackage{float}
 \usepackage{changepage}
 \usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
 \newcommand\PDFtitle{Narzędzie do interaktywnego planowania trasy lotu bezzałogowego statku powietrznego}
 \newcommand\PDFauthors{Tomasz Krępa, Filip Korthals, Wiktoria Kubacka}
 \hypersetup{
@@ -19,6 +21,31 @@
 \makeatletter
 \renewcommand{\verbatim@font}{\ttfamily\small}
 \makeatother
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.718, 0.592, 0.89}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{python_style}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
 
 % Część właściwa pracy
 \begin{document}
@@ -32,7 +59,8 @@
 \include{chapters/5_przegląd_stanu_wiedzy}
 \include{chapters/6_analiza_systemu}
 \include{chapters/7_projekt_systemu}
-\include{chapters/8_implementacja_testowanie_weryfikacja_i_walidacja}
-\include{chapters/9_podsumowanie_i_wnioski}
-\include{chapters/10_wykazy}
+\include{chapters/8_implementacja}
+\include{chapters/9_testowanie_weryfikacja_i_walidacja}
+\include{chapters/10_podsumowanie_i_wnioski}
+\include{chapters/11_wykazy}
 \end{document}
