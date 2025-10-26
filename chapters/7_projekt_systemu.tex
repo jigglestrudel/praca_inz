@@ -27,6 +27,30 @@ Projekt architektury systemu obejmuje dwie główne części składowe widoczne 
 
 Na powyższym schemacie widać relacje, jakie zachodzą między poszczególnymi elementami systemu. Frontend będzie wykorzystywał pobrany z API Google Maps komponent mapy, a także będzie wykonywał żądania do backendu w celu zaplanowania trasy dla zadanego terenu. Backend będzie obsługiwał te żądania z wykorzystaniem API Google Earth Engine i zwracał potrzebny wynik do interfejsu w celu zaprezentowania wyników użytkownikowi.
 
+\subsection{Diagram klas}
+
+Poniżej znajduje się diagram klas, na którym zostały przedstawione elementy odpowiedzialne za prezentację wyników oraz komunikację z użytkownikiem, a także logikę aplikacji.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/Diagram_klas.png}
+    \caption{Diagram klas}
+\end{figure}
+
+Klasa BackendManager jest odpowiedzialna za przepływ sterowania podczas obsługi żądań kierowanych do backendu. Wyniki otrzymane podczas wykrywania obszarów na zdjęciach satelitarnych oraz planowania trasy do wyświetlenia będą zwracane przez tę klasę do interfejsu w celu prezentacji użytkownikowi. Ponadto, dane podane przez użytkownika będą tutaj przetwarzane i przekazywane do odpowiednich części systemu.
+
+Klasa EdgeDetector jest odpowiedzialna za wykrywanie krawędzi na zadanym przez użytkownika obszarze. Będzie przyjmowała punkty podane przez użytkownika i następnie pobierała odpowiednie mapy i wykonywała na nich odpowiednie operacje. Otrzymane wyniki będą zwracane do klasy BackendManager.
+
+Klasa AreaDetector wykrywa obszary na podstawie danych o wykrytych krawędziach na mapie oraz podanych przez użytkownika punktów. Wykryte obszary są przekazywane do BackendManagera w celu prezentacji ich użytkownikowi.
+
+Klasa PathPlanner wytycza trasę przelotu drona na podstawie wykrytego obszaru przekazanego z BackendManagera. Jej wynikiem będą punkty wykrytej trasy, które będą wykorzystywane do prezentowania wyników użytkownikowi na mapie.
+
+Komponent HomePage będzie umożliwiał użytkownikowi kierowanie żądań do backendu i zarządzanie prezentacją otrzymanych wyników podczas wykrywania obszaru i planowania trasy.
+
+Komponent Form będzie odpowiedzialny za pobieranie od użytkownika potrzebnych do zaplanowania trasy danych.
+
+GoogleMapComponent będzie zajmować się pobieraniem od użytkownika punktów wykorzystywanych podczas planowania trasy i wykrywania obszaru, a także prezentacją wyników poszczególnych operacji na mapie.
+
 \subsection{Diagram przypadków użycia}
 
 Poniżej został przedstawiony diagram przypadków użycia ilustrujący działanie systemu oraz jego granice, a także opisy każdego z przypadków użycia.
@@ -126,30 +150,6 @@ Użytkownik wybrał opcję przejścia do poprawy granic wykrytego obszaru \\*
 \textit{Warunki końcowe}
 
 System zapisał zmiany w wykrytym przez niego terenie \\*
-
-\subsection{Diagram klas}
-
-Poniżej znajduje się diagram klas, na którym zostały przedstawione elementy odpowiedzialne za prezentację wyników oraz komunikację z użytkownikiem, a także logikę aplikacji.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=15cm]{images/Diagram_klas.png}
-    \caption{Diagram klas}
-\end{figure}
-
-Klasa BackendManager jest odpowiedzialna za przepływ sterowania podczas obsługi żądań kierowanych do backendu. Wyniki otrzymane podczas wykrywania obszarów na zdjęciach satelitarnych oraz planowania trasy do wyświetlenia będą zwracane przez tę klasę do interfejsu w celu prezentacji użytkownikowi. Ponadto, dane podane przez użytkownika będą tutaj przetwarzane i przekazywane do odpowiednich części systemu.
-
-Klasa EdgeDetector jest odpowiedzialna za wykrywanie krawędzi na zadanym przez użytkownika obszarze. Będzie przyjmowała punkty podane przez użytkownika i następnie pobierała odpowiednie mapy i wykonywała na nich odpowiednie operacje. Otrzymane wyniki będą zwracane do klasy BackendManager.
-
-Klasa AreaDetector wykrywa obszary na podstawie danych o wykrytych krawędziach na mapie oraz podanych przez użytkownika punktów. Wykryte obszary są przekazywane do BackendManagera w celu prezentacji ich użytkownikowi.
-
-Klasa PathPlanner wytycza trasę przelotu drona na podstawie wykrytego obszaru przekazanego z BackendManagera. Jej wynikiem będą punkty wykrytej trasy, które będą wykorzystywane do prezentowania wyników użytkownikowi na mapie.
-
-Komponent HomePage będzie umożliwiał użytkownikowi kierowanie żądań do backendu i zarządzanie prezentacją otrzymanych wyników podczas wykrywania obszaru i planowania trasy.
-
-Komponent Form będzie odpowiedzialny za pobieranie od użytkownika potrzebnych do zaplanowania trasy danych.
-
-GoogleMapComponent będzie zajmować się pobieraniem od użytkownika punktów wykorzystywanych podczas planowania trasy i wykrywania obszaru, a także prezentacją wyników poszczególnych operacji na mapie.
 
 \subsection{Projekt interfejsu użytkownika}
 
