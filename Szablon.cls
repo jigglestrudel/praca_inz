@@ -105,15 +105,11 @@
 \pagenumbering{arabic}
 
 \RequirePackage{fancyhdr}
-\def\mytitle{	
-Narzędzie do interaktywnego planowania trasy lotu bezzałogowego statku powietrznego}
 
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyhead[C]{\mytitle}
   \fancyfoot[C]{\fontsize{9pt}{9pt}\selectfont\thepage}%
-   \renewcommand{\headrulewidth}{0.4pt} 
-    \renewcommand{\footrulewidth}{0.4pt}
+   \renewcommand{\headrulewidth}{0.0pt}
 }
 
 \pagestyle{plain}
@@ -276,16 +272,8 @@ Narzędzie do interaktywnego planowania trasy lotu bezzałogowego statku powietr
 
 % Ustawienie wyglądu parametru urldate
 \NewBibliographyString{urldate}
-\DefineBibliographyStrings{english}{ urldate = {dostęp} }
-\DeclareFieldFormat{urldate}{\addcomma\space\mkbibparens{\bibstring{urldate}\space#1}}
-
-
-
-\NewBibliographyString{url}
-\DefineBibliographyStrings{english}{ url = {URL} }
-\DeclareFieldFormat{url}{\normalfont#1}
-
-
+\DefineBibliographyStrings{english}{ urldate = {Dostęp}}
+\DeclareFieldFormat{urldate}{\mkbibparens{\addcomma\bibstring{urldate}\space#1}}
 
 % Nazwy wykazów
 \renewcommand{\listfigurename}{Wykaz rysunków}
